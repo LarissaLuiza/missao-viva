@@ -13,6 +13,21 @@ O site é composto por três páginas principais:
 3.  **Página de Projetos (`projetos.html`):** Lista ou exibe informações sobre projetos ou áreas de atuação.
 
 ## 📁 Estrutura de Arquivos
+## 🔗 Acesso ao Projeto (GitHub Pages)
+
+Você pode visualizar este projeto online através do GitHub Pages:
+
+**Link do Site:** (https://larissaluiza.github.io/missao-viva/)
+
+## 🛠️ Tecnologias Utilizadas
+
+* **HTML5:** Estrutura e marcação do conteúdo.
+
+
+
+---
+*Desenvolvido por: [Larissa Luiza]*
+
 
 A organização do projeto segue a seguinte estrutura: 
  ├── assets/ # Pasta que contém imagens, ícones e outros recursos. 
