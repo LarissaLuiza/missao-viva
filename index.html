@@ -1,42 +1,90 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Missão Viva — Plataforma que conecta ONGs, voluntários e doadores em prol de causas sociais.">
-  <meta name="theme-color" content="#2E8B57">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Missão Viva | Início</title>
-  <link rel="icon" href="assets/img/favicon.ico">
-  <link rel="stylesheet" href="assets/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missão Viva | Conectando Causas e Voluntários</title>
+
+    <!-- FONTE E ESTILO -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css" media="all">
+
+    <!-- FAVICON (ÍCONE DO LOGO) -->
+    <!-- Tentativa 1: Formato padrão mais moderno -->
+    <link rel="icon" href="https://placehold.co/40x40/606c38/ffffff?text=MV" type="image/png">
+    <!-- Tentativa 2: Fallback mais antigo e robusto (pode resolver problemas de cache) -->
+    <link rel="shortcut icon" href="https://placehold.co/40x40/606c38/ffffff?text=MV" type="image/png">
+
 </head>
 <body>
-  <header>
-    <img src="assets/logo.png" alt="Logo Missão Viva" class="logo">
-    <h1>Missão Viva</h1>
-    <p>Conectando quem faz o bem.</p>
-  </header>
+    
+    <!-- === CABEÇALHO === -->
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo-container">
+                <!-- Imagem do logo MV no cabeçalho -->
+                <img 
+                    src="https://placehold.co/40x40/606c38/ffffff?text=MV" 
+                    alt="Logo Missão Viva" 
+                    class="logo" 
+                >
+                <div class="titles">
+                    <h1>Missão Viva</h1>
+                    <p class="tagline">Conectando quem ajuda a quem precisa.</p>
+                </div>
+            </div>
+            
+            <nav class="main-nav">
+                <a href="index.html" class="active">Início</a>
+                <a href="projetos.html">Projetos</a>
+                <a href="cadastro.html" class="cta-nav">Cadastro</a>
+            </nav>
+        </div>
+    </header>
 
-  <nav>
-    <a href="index.html">Início</a>
-    <a href="projetos.html">Projetos</a>
-    <a href="cadastro.html">Cadastro</a>
-  </nav>
+    <!-- === CONTEÚDO PRINCIPAL === -->
+    <main>
 
-  <main>
-    <section class="hero">
-      <h2>Dê mais visibilidade à sua causa!</h2>
-      <p>Com a Missão Viva, ONGs podem divulgar projetos, receber doações e conectar-se com voluntários.</p>
-      <a href="cadastro.html" class="cta">Cadastre-se agora</a>
-    </section>
-  </main>
+        <!-- SEÇÃO HERO -->
+        <section class="hero">
+            <h2>Dê mais visibilidade à sua causa!</h2>
+            <p>Com a Missão Viva, ONGs podem divulgar projetos, receber doações e conectar-se com voluntários.</p>
+            <a href="cadastro.html" class="cta-button">Cadastre-se Agora</a>
+        </section>
 
-  <footer>
-    &copy; <span id="ano"></span> Missão Viva — Todos os direitos reservados.
-  </footer>
+        <!-- SEÇÃO: O QUE FAZEMOS -->
+        <section class="page-content">
+            <div class="page-intro">
+                <h2>O que fazemos?</h2>
+                <p>Nossa missão é simples: facilitar o encontro entre projetos sociais e pessoas dispostas a contribuir.</p>
+            </div>
 
-  <script>
-    document.getElementById("ano").textContent = new Date().getFullYear();
-  </script>
+            <!-- Exemplo de destaque adicional -->
+            <div class="highlights">
+                <div class="highlight-item">
+                    <h3>📢 Divulgue</h3>
+                    <p>ONGs e projetos podem criar páginas para compartilhar suas iniciativas e atrair apoio.</p>
+                </div>
+                <div class="highlight-item">
+                    <h3>🤝 Conecte</h3>
+                    <p>Voluntários encontram causas alinhadas aos seus valores e disponibilidade.</p>
+                </div>
+                <div class="highlight-item">
+                    <h3>💚 Transforme</h3>
+                    <p>Juntos, criamos uma rede solidária que gera impacto real e contínuo.</p>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- === RODAPÉ === -->
+    <footer class="main-footer">
+        <p>&copy; 2025 Missão Viva. Todos os direitos reservados.</p>
+        <p>Desenvolvido com carinho e propósito.</p>
+    </footer>
+
 </body>
 </html>

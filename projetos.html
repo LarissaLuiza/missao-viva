@@ -1,48 +1,96 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Projetos sociais da Missão Viva — apoie causas e participe de iniciativas solidárias.">
-  <meta name="theme-color" content="#2E8B57">
-  <link rel="stylesheet" href="assets/style.css">
-  <title>Missão Viva | Projetos</title>
-  <link rel="icon" href="assets/img/favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missão Viva | Projetos</title>
+
+    <!-- FONTE E ESTILO -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css" media="all">
+
+    <!-- FAVICON (ÍCONE DO LOGO) - Copiado do index.html -->
+    <link rel="icon" href="https://placehold.co/40x40/606c38/ffffff?text=MV" type="image/png">
+    <link rel="shortcut icon" href="https://placehold.co/40x40/606c38/ffffff?text=MV" type="image/png">
+
 </head>
+
 <body>
-  <header>
-    <h1>Projetos Sociais</h1>
-    <p>Conheça e apoie iniciativas transformadoras.</p>
-  </header>
+    <!-- === CABEÇALHO === -->
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo-container">
+                <!-- Imagem do logo MV no cabeçalho - Corrigido o src para o placeholder -->
+                <img 
+                    src="https://placehold.co/40x40/606c38/ffffff?text=MV" 
+                    alt="Logo Missão Viva" 
+                    class="logo"
+                >
+                <div class="titles">
+                    <h1>Missão Viva</h1>
+                    <p class="tagline">Conectando quem ajuda a quem precisa.</p>
+                </div>
+            </div>
 
-  <nav>
-    <a href="index.html">Início</a>
-    <a href="projetos.html">Projetos</a>
-    <a href="cadastro.html">Cadastro</a>
-  </nav>
+            <nav class="main-nav">
+                <a href="index.html">Início</a>
+                <a href="projetos.html" class="active">Projetos</a>
+                <a href="cadastro.html" class="cta-nav">Cadastro</a> 
+            </nav>
+        </div>
+    </header>
 
-  <main>
-    <section class="projetos">
-      <article class="projeto">
-        <h3>Educar para o Futuro</h3>
-        <img class="imagem" src="assets/crianças.jpg" alt="crianças" class="projeto-img">
-        <p>Alfabetização de crianças em comunidades carentes.</p>
-      </article>
+    <!-- === CONTEÚDO PRINCIPAL === -->
+    <main class="page-content">
+        
+        <!-- Introdução da página -->
+        <section class="page-intro">
+            <h2>Projetos Sociais</h2>
+            <p>Conheça e apoie as iniciativas que estão transformando vidas. Sua ajuda faz a diferença!</p>
+        </section>
 
-      <article class="projeto">
-        <h3>Verde Vida</h3>
-        <img class="imagem" src="assets/reflorestamento.jpg" alt="Plantio" class="projeto-img">
-        <p>Reflorestamento urbano e voluntariado ambiental.</p>
-      </article>
-    </section>
-  </main>
+        <!-- Lista de Projetos -->
+        <section class="projetos-grid">
+            
+            <article class="projeto-card">
+                <img 
+                    src="assets/crianças.jpg" 
+                    alt="Crianças aprendendo em sala de aula" 
+                    class="card-img"
+                >
+                <div class="card-content">
+                    <h3>Educar para o Futuro</h3>
+                    <p>Alfabetização e reforço escolar para crianças em comunidades carentes.</p>
+                    <a href="#" class="btn-primary">Detalhes e Apoiar</a>
+                </div>
+            </article>
 
-  <footer>
-    &copy; <span id="ano"></span> Missão Viva — Todos os direitos reservados.
-  </footer>
+            <article class="projeto-card">
+                <img 
+                    src="assets/reflorestamento.jpg" 
+                    alt="Voluntários realizando plantio de árvores" 
+                    class="card-img"
+                >
+                <div class="card-content">
+                    <h3>Verde Vida</h3>
+                    <p>Iniciativa de reflorestamento urbano e conscientização ambiental com voluntários locais.</p>
+                    <a href="#" class="btn-primary">Detalhes e Voluntariar</a>
+                </div>
+            </article>
+            
+            <!-- Adicione mais projetos aqui, se desejar -->
 
-  <script>
-    document.getElementById("ano").textContent = new Date().getFullYear();
-  </script>
+        </section>
+    </main>
+
+    <!-- === RODAPÉ === -->
+    <footer class="main-footer">
+        <p>&copy; 2025 Missão Viva — Todos os direitos reservados.</p>
+        <p>Desenvolvido com carinho e propósito.</p>
+    </footer>
+
 </body>
 </html>
+
