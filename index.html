@@ -5,26 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Missão Viva | Conectando Causas e Voluntários</title>
 
-    <!-- FONTE E ESTILO -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css" media="all">
-
-    <!-- FAVICON (ÍCONE DO LOGO) -->
-    <!-- Tentativa 1: Formato padrão mais moderno -->
-    <link rel="icon" href="https://placehold.co/40x40/606c38/ffffff?text=MV" type="image/png">
-    <!-- Tentativa 2: Fallback mais antigo e robusto (pode resolver problemas de cache) -->
-    <link rel="shortcut icon" href="https://placehold.co/40x40/606c38/ffffff?text=MV" type="image/png">
-
 </head>
 <body>
-    
-    <!-- === CABEÇALHO === -->
+      
     <header class="main-header">
         <div class="header-content">
             <div class="logo-container">
-                <!-- Imagem do logo MV no cabeçalho -->
+
                 <img 
                     src="https://placehold.co/40x40/606c38/ffffff?text=MV" 
                     alt="Logo Missão Viva" 
@@ -36,6 +27,10 @@
                 </div>
             </div>
             
+           <button id="toggle-theme-btn" class="theme-toggle">
+            Mudar Tema
+        </button>
+            
             <nav class="main-nav">
                 <a href="index.html" class="active">Início</a>
                 <a href="projetos.html">Projetos</a>
@@ -44,24 +39,19 @@
         </div>
     </header>
 
-    <!-- === CONTEÚDO PRINCIPAL === -->
     <main>
-
-        <!-- SEÇÃO HERO -->
         <section class="hero">
             <h2>Dê mais visibilidade à sua causa!</h2>
             <p>Com a Missão Viva, ONGs podem divulgar projetos, receber doações e conectar-se com voluntários.</p>
             <a href="cadastro.html" class="cta-button">Cadastre-se Agora</a>
         </section>
 
-        <!-- SEÇÃO: O QUE FAZEMOS -->
         <section class="page-content">
             <div class="page-intro">
                 <h2>O que fazemos?</h2>
                 <p>Nossa missão é simples: facilitar o encontro entre projetos sociais e pessoas dispostas a contribuir.</p>
             </div>
 
-            <!-- Exemplo de destaque adicional -->
             <div class="highlights">
                 <div class="highlight-item">
                     <h3>📢 Divulgue</h3>
@@ -80,11 +70,12 @@
         
     </main>
 
-    <!-- === RODAPÉ === -->
     <footer class="main-footer">
         <p>&copy; 2025 Missão Viva. Todos os direitos reservados.</p>
         <p>Desenvolvido com carinho e propósito.</p>
     </footer>
+
+    <script src="assets/script.js"></script>
 
 </body>
 </html>

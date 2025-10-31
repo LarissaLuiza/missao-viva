@@ -1,6 +1,8 @@
 // === 1. VARIÁVEIS GLOBAIS ===
 const appContent = document.getElementById('app-content');
 const mainNav = document.getElementById('main-nav');
+// VARIÁVEL GLOBAL ADICIONADA: O elemento <body> é usado para aplicar a classe 'dark-mode'
+const body = document.body; 
 
 /**
  * Exibe uma caixa de mensagem modal customizada, substituindo o alert() nativo.
@@ -11,6 +13,15 @@ function showMessage(message) {
     document.getElementById('messageText').innerText = message;
     messageBox.style.display = 'block';
 }
+
+/**
+ * Fecha a caixa de mensagem modal.
+ */
+function closeMessage() {
+    const messageBox = document.getElementById('messageBox');
+    messageBox.style.display = 'none';
+}
+
 
 // === 2. TEMPLATES JAVASCRIPT (Conteúdo das Rotas) ===
 // Define as funções que retornam o HTML para cada página da SPA.
@@ -35,18 +46,18 @@ const TEMPLATES = {
             <h2>Projetos em Destaque</h2>
             <p>Conheça as iniciativas que estão transformando vidas na sua região.</p>
         </section>
-        <div class="projetos-list" style="max-width: 600px; margin: 0 auto; padding: 20px; background: var(--color-light); border-radius: var(--border-radius); box-shadow: var(--shadow-soft);">
+        <div class="projetos-list" style="max-width: 600px; margin: 0 auto; padding: 20px; background: var(--color-light); border-radius: var(--border-radius); box-shadow: var(--shadow-soft); border: 1px solid var(--color-muted);">
             <div style="border-bottom: 1px dashed var(--color-secondary); padding: 15px 0;">
                 <h3 style="color: var(--color-primary);">Reflorestamento Local</h3>
-                <p style="margin-top: 5px;">Plante uma árvore e ajude o meio ambiente. Buscamos 20 voluntários!</p>
+                <p style="margin-top: 5px; color: var(--color-dark);">Plante uma árvore e ajude o meio ambiente. Buscamos 20 voluntários!</p>
             </div>
             <div style="border-bottom: 1px dashed var(--color-secondary); padding: 15px 0;">
                 <h3 style="color: var(--color-primary);">Sopa Solidária</h3>
-                <p style="margin-top: 5px;">Ajude a preparar e distribuir refeições para pessoas em situação de rua.</p>
+                <p style="margin-top: 5px; color: var(--color-dark);">Ajude a preparar e distribuir refeições para pessoas em situação de rua.</p>
             </div>
             <div style="padding: 15px 0;">
                 <h3 style="color: var(--color-primary);">Aulas de Reforço</h3>
-                <p style="margin-top: 5px;">Doe seu tempo ensinando crianças carentes.</p>
+                <p style="margin-top: 5px; color: var(--color-dark);">Doe seu tempo ensinando crianças carentes.</p>
             </div>
             <p style="text-align: center; margin-top: 30px;">Faça seu <a data-route="cadastro" style="font-weight: 700;">Cadastro</a> para participar!</p>
         </div>
@@ -68,23 +79,23 @@ const TEMPLATES = {
 
                     <label for="nome">Nome Completo*</label>
                     <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
-                    <span class="error-message" data-input="nome">Nome é obrigatório.</span>
+                    <span class="error-message" data-input="nome" style="display: none;">Nome é obrigatório.</span>
 
                     <label for="email">E-mail*</label>
                     <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
-                    <span class="error-message" data-input="email">E-mail inválido ou obrigatório.</span>
+                    <span class="error-message" data-input="email" style="display: none;">E-mail inválido ou obrigatório.</span>
 
                     <label for="cpf">CPF*</label>
                     <input type="text" id="cpf" name="cpf" maxlength="14" placeholder="000.000.000-00" required>
-                    <span class="error-message" data-input="cpf">CPF é obrigatório e deve ser válido.</span>
+                    <span class="error-message" data-input="cpf" style="display: none;">CPF é obrigatório e deve ser válido.</span>
 
                     <label for="telefone">Telefone*</label>
                     <input type="tel" id="telefone" name="telefone" maxlength="15" placeholder="(00) 90000-0000" required>
-                    <span class="error-message" data-input="telefone">Telefone é obrigatório.</span>
+                    <span class="error-message" data-input="telefone" style="display: none;">Telefone é obrigatório.</span>
 
                     <label for="nascimento">Data de Nascimento*</label>
                     <input type="date" id="nascimento" name="nascimento" required>
-                    <span class="error-message" data-input="nascimento">Data de nascimento é obrigatória.</span>
+                    <span class="error-message" data-input="nascimento" style="display: none;">Data de nascimento é obrigatória.</span>
                 </fieldset>
 
                 <!-- Seção: Endereço -->
@@ -93,11 +104,11 @@ const TEMPLATES = {
 
                     <label for="cep">CEP*</label>
                     <input type="text" id="cep" name="cep" maxlength="9" placeholder="00000-000" required>
-                    <span class="error-message" data-input="cep">CEP é obrigatório.</span>
+                    <span class="error-message" data-input="cep" style="display: none;">CEP é obrigatório.</span>
                     
                     <label for="cidade">Cidade*</label>
                     <input type="text" id="cidade" name="cidade" required>
-                    <span class="error-message" data-input="cidade">Cidade é obrigatória.</span>
+                    <span class="error-message" data-input="cidade" style="display: none;">Cidade é obrigatória.</span>
 
                     <label for="estado">Estado*</label>
                     <select id="estado" name="estado" required>
@@ -106,12 +117,14 @@ const TEMPLATES = {
                         <option value="RJ">Rio de Janeiro</option>
                         <option value="MG">Minas Gerais</option>
                         <option value="PR">Paraná</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="RS">Rio Grande do Sul</option>
                     </select>
-                    <span class="error-message" data-input="estado">Estado é obrigatório.</span>
+                    <span class="error-message" data-input="estado" style="display: none;">Estado é obrigatório.</span>
 
                     <label for="endereco">Rua e Número*</label>
                     <input type="text" id="endereco" name="endereco" placeholder="Ex: Rua das Flores, 123" required>
-                    <span class="error-message" data-input="endereco">Endereço é obrigatório.</span>
+                    <span class="error-message" data-input="endereco" style="display: none;">Endereço é obrigatório.</span>
 
                     <label for="complemento">Complemento (Opcional)</label>
                     <input type="text" id="complemento" name="complemento" placeholder="Apartamento, Bloco, etc.">
@@ -139,7 +152,7 @@ const TEMPLATES = {
                 </fieldset>
 
                 <div class="form-actions">
-                    <button type="submit" class="cta-button">Finalizar Cadastro</button>
+                    <button type="submit" class="cta-button submit-button">Finalizar Cadastro</button>
                 </div>
             </form>
         </section>
@@ -204,6 +217,17 @@ function renderPage(route, data = null) {
     if (route === 'cadastro') {
         setupFormListener();
     }
+    
+    // 5. Adiciona o listener para botões de navegação dentro do conteúdo injetado (data-route)
+    appContent.querySelectorAll('[data-route]').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const contentRoute = e.currentTarget.getAttribute('data-route');
+            if(contentRoute) {
+                e.preventDefault();
+                renderPage(contentRoute);
+            }
+        });
+    });
 }
 
 // === 4. VALIDAÇÃO E EVENT LISTENERS DO FORMULÁRIO ===
@@ -279,8 +303,8 @@ function validateSingleField(field) {
                 age--;
             }
             if (age < 18) {
-                 message = 'Você deve ter pelo menos 18 anos para se cadastrar.';
-                 error = true;
+                message = 'Você deve ter pelo menos 18 anos para se cadastrar.';
+                error = true;
             }
         }
     }
@@ -312,14 +336,14 @@ function validateForm(event) {
         const field = elements[i];
         
         // Ignora elementos não relevantes para validação
-        if (field.type === 'submit' || field.tagName === 'FIELDSET' || field.type === 'radio' || (field.value.trim() === '' && !field.hasAttribute('required'))) {
+        if (field.type === 'submit' || field.tagName === 'FIELDSET' || field.type === 'radio' || field.type === 'textarea' || (field.value.trim() === '' && !field.hasAttribute('required'))) {
             continue;
         }
 
         if (!validateSingleField(field)) {
             isValid = false;
             if (!firstErrorField) {
-                 firstErrorField = field;
+                firstErrorField = field;
             }
         }
     }
@@ -336,15 +360,20 @@ function validateForm(event) {
     
     // 4. Foca no primeiro campo com erro
     if (firstErrorField) {
-         firstErrorField.focus();
+        firstErrorField.focus();
     }
 
     // 5. Processamento final (envio)
     if (isValid) {
         const formData = new FormData(form);
         const data = {};
+        // Obtém o valor do radio button que foi ignorado no loop acima
+        data['participacao'] = participacaoChecked ? participacaoChecked.value : '';
+
         for (const [key, value] of formData.entries()) {
-            data[key] = value;
+            if (key !== 'participacao') { // Já pegamos 'participacao'
+                 data[key] = value;
+            }
         }
         
         console.log('Dados do Formulário Válidos:', data);
@@ -366,10 +395,10 @@ function setupFormListener() {
         form.addEventListener('submit', validateForm);
         
         // Listener de Validação em Tempo Real (onblur)
-        const requiredFields = form.querySelectorAll('input[required], select[required], textarea[required]');
-        requiredFields.forEach(field => {
-            if (field.type !== 'radio' && field.type !== 'checkbox') {
-                 field.addEventListener('blur', (e) => validateSingleField(e.target));
+        const fields = form.querySelectorAll('input, select, textarea');
+        fields.forEach(field => {
+            if (field.type !== 'submit' && field.type !== 'radio' && field.type !== 'checkbox') {
+                field.addEventListener('blur', (e) => validateSingleField(e.target));
             }
         });
         
@@ -395,33 +424,104 @@ function formatPhone(e) {
     e.target.value = value;
 }
 
-// === 5. SETUP INICIAL DA APLICAÇÃO ===
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleButton = document.getElementById('toggle-theme-btn');
+    const body = document.body;
+    
+    // Chave usada no localStorage para salvar a preferência do usuário
+    const STORAGE_KEY = 'user-theme';
+    const DARK_CLASS = 'dark-mode';
+
+    /**
+     * Função que aplica ou remove a classe de modo escuro e salva a preferência.
+     */
+    function toggleTheme() {
+        // 1. Alterna a classe no elemento <body>
+        body.classList.toggle(DARK_CLASS);
+
+        // 2. Verifica o estado atual e salva no localStorage
+        const isDarkMode = body.classList.contains(DARK_CLASS);
+        if (isDarkMode) {
+            localStorage.setItem(STORAGE_KEY, 'dark');
+            toggleButton.textContent = 'Mudar para Tema Claro';
+        } else {
+            localStorage.setItem(STORAGE_KEY, 'light');
+            toggleButton.textContent = 'Mudar para Tema Escuro';
+        }
+    }
+
+    /**
+     * Função que carrega o tema salvo no localStorage ou a preferência do sistema.
+     */
+    function loadTheme() {
+        const savedTheme = localStorage.getItem(STORAGE_KEY);
+        
+        // Se houver uma preferência salva (dark ou light)
+        if (savedTheme) {
+            if (savedTheme === 'dark') {
+                body.classList.add(DARK_CLASS);
+                toggleButton.textContent = 'Mudar para Tema Claro';
+            } else {
+                // Tema 'light' ou tema padrão (sem classe)
+                body.classList.remove(DARK_CLASS);
+                toggleButton.textContent = 'Mudar para Tema Escuro';
+            }
+            return;
+        }
+
+        // Se não houver preferência salva, verifica a preferência do sistema operacional
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            body.classList.add(DARK_CLASS);
+            localStorage.setItem(STORAGE_KEY, 'dark');
+            toggleButton.textContent = 'Mudar para Tema Claro';
+        } else {
+            // Define o tema padrão (claro) e salva
+            localStorage.setItem(STORAGE_KEY, 'light');
+            toggleButton.textContent = 'Mudar para Tema Escuro';
+        }
+    }
+
+    // 1. Carrega o tema ao iniciar a página
+    loadTheme();
+
+    // 2. Adiciona o evento de clique ao botão
+    toggleButton.addEventListener('click', toggleTheme);
+});
+
+// === 6. SETUP INICIAL DA APLICAÇÃO ===
 
 /**
- * Configura os listeners de navegação e renderiza a página inicial.
+ * Configura os listeners de navegação, o listener do botão de tema e renderiza a página inicial.
  */
 function setupSPA() {
-    // 1. Adiciona listener de navegação
+    // 1. Adiciona listener de navegação principal (menu)
     mainNav.addEventListener('click', (e) => {
         const route = e.target.getAttribute('data-route');
-        const isCtaButton = e.target.classList.contains('cta-button');
-
         if (route) {
             e.preventDefault();
             renderPage(route);
-        } else if (isCtaButton && e.target.closest('#app-content')) {
-            // Trata botões de navegação dentro do conteúdo injetado (ex: "Ir para Cadastro")
-            const contentRoute = e.target.getAttribute('data-route');
-            if(contentRoute) {
-                e.preventDefault();
-                renderPage(contentRoute);
-            }
         }
     });
 
-    // 2. Renderiza a página inicial (Cadastro)
-    renderPage('cadastro'); 
+    // 2. Configura o listener do botão de tema
+    const themeToggle = document.getElementById('mode-toggle-button'); 
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleDarkMode); 
+        console.log("Listener de tema configurado com ID 'mode-toggle-button'.");
+    }
+    
+    // 3. Adiciona listener para fechar a caixa de mensagem
+    const closeButton = document.getElementById('closeMessageBox');
+    if (closeButton) {
+        closeButton.addEventListener('click', closeMessage);
+    }
+
+    // 4. Carrega a preferência de tema do usuário
+    loadThemePreference();
+
+    // 5. Renderiza a página inicial
+    renderPage('home'); 
 }
 
-// Inicia a aplicação quando a janela estiver totalmente carregada
-window.onload = setupSPA;
+// Inicializa a aplicação quando o DOM estiver completamente carregado
+document.addEventListener("DOMContentLoaded", setupSPA);

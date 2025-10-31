@@ -2,22 +2,37 @@
 /* 1. VARIÁVEIS DE CORES E FONTES */
 /* ==================================== */
 :root {
-    /* 🌿 Paleta Natural Verde + Areia */
-    --color-primary: #3f6134;       /* Verde folha médio (destaques e links) */
-    --color-secondary: #bfc89a;     /* Verde areia suave (CTAs e detalhes) */
-    --color-background: #f9f8f3;    /* Areia muito clara (fundo da página) */
-    --color-dark: #2d3a25;          /* Verde profundo terroso (texto principal) */
-    --color-light: #ffffff;         /* Branco puro (cards, containers) */
-    --color-accent: #4e8a57;        /* Verde vibrante (hover e realces) */
-    --color-muted: #94a883;         /* Verde acinzentado (bordas e subtítulos) */
+    /* 🌿 PALETA CLARA (Padrão) */
+    --color-primary: #3f6134; /* Verde folha médio (destaques e links) */
+    --color-secondary: #bfc89a;/* Verde areia suave (CTAs e detalhes) */
+    --color-background: #f9f8f3;/* Areia muito clara (fundo da página) */
+    --color-dark: #2d3a25;/* Verde profundo terroso (texto principal) */
+    --color-light: #ffffff;/* Branco puro (cards, containers) */
+    --color-accent: #4e8a57;/* Verde vibrante (hover e realces) */
+    --color-muted: #94a883;/* Verde acinzentado (bordas e subtítulos) */
 
-    /* Tipografia e estilo */
+    /* TIPOGRAFIA E ESTILO */
     --font-primary: 'Montserrat', sans-serif;
     --border-radius: 10px;
     --max-width: 1100px;
     --shadow-soft: 0 3px 10px rgba(0, 0, 0, 0.08);
     --transition: all 0.3s ease;
+
 }
+/* 🌙 PALETA ESCURA: Sobrescreve as variáveis do :root quando a classe dark-mode está ativa */
+body.dark-mode {
+    --color-primary: #9cb45c;/* Novo Verde Destaque Claro */
+    --color-secondary: #57754b;/* Novo Verde CTA Escuro */
+    --color-background: #121212; /* Fundo Quase Preto */
+    --color-dark: #e0e0e0; /* Texto Claro */
+    --color-light: #1f1f1f;/* Fundo de Cards/Containers Escuros */
+    --color-accent: #c0d67a;/* Novo Verde Vibrante Claro */
+    --color-muted: #646464;/* Cinza para Bordas e Subtítulos */
+
+    /* Ajuste de sombra para não ficar preta sobre fundo escuro */
+    --shadow-soft: 0 3px 10px rgba(255, 255, 255, 0.05);
+}
+
 
 /* ==================================== */
 /* 2. BASE E TIPOGRAFIA */
@@ -33,12 +48,17 @@ body {
     background-color: var(--color-background);
     color: var(--color-dark);
     line-height: 1.6;
+    /* Transição suave para mudança de modo */
+    transition: background-color 0.4s, color 0.4s;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 a {
     text-decoration: none;
     color: var(--color-primary);
-    transition: color 0.3s ease;
+    transition: color var(--transition);
 }
 
 a:hover {
@@ -65,8 +85,92 @@ a:hover {
     transform: translateY(-2px);
 }
 
+/* Estilo para o botão de cadastro no NAV */
+.cta-nav {
+    background-color: var(--color-primary);
+    color: var(--color-light) !important;
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+}
+
+.cta-nav:hover {
+    background-color: var(--color-accent);
+}
+
+/* ----------------------------------- */
+/* 1. Definição das Variáveis (Root/Claro) */
+/* ----------------------------------- */
+:root {
+    /* Cores do Modo CLARO (Padrão) */
+    --background-color: #f0f0f0; /* Cinza claro */
+    --text-color: #1a1a1a;       /* Quase preto */
+    --card-bg-color: #ffffff;    /* Branco puro */
+    --button-bg-color: #a3f1a7;
+    --button-text-color: #ffffff;
+}
+
+/* ----------------------------------- */
+/* 2. Definição das Variáveis (Modo Escuro) */
+/* ----------------------------------- */
+body.dark-mode {
+    /* Cores do Modo ESCURO (Sobrescrita) */
+    --background-color: #1a1a1a;  /* Quase preto */
+    --text-color: #f0f0f0;        /* Cinza claro */
+    --card-bg-color: #333333;     /* Cinza escuro para destaque */
+    --button-bg-color: #474749;   /* Roxo escuro */
+    --button-text-color: #ffffff;
+}
+
+/* ----------------------------------- */
+/* 3. Estilos Gerais */
+/* ----------------------------------- */
+body {
+ 
+    /* Aplica as cores via variáveis */
+    background-color: var(--background-color);
+    color: var(--text-color);
+    
+    /* Transição suave para a troca de tema */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.theme-toggle {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    transition: background-color 0.3s ease;
+}
+
+.card {
+    background-color: var(--card-bg-color);
+    color: var(--text-color);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+/* Estilo para a caixa do modo escuro */
+body.dark-mode .card {
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
 /* ==================================== */
-/* 4. CABEÇALHO */
+/* 5. CABEÇALHO E NAVEGAÇÃO */
 /* ==================================== */
 .main-header {
     background-color: var(--color-light);
@@ -105,31 +209,15 @@ a:hover {
     color: var(--color-muted);
 }
 
-/* ==================================== */
-/* 5. NAVEGAÇÃO */
-/* ==================================== */
 .main-nav a {
-    color: var(--color-dark);
+    padding: 5px 10px;
+    margin: 0 5px;
     font-weight: 600;
-    margin-left: 25px;
-    position: relative;
-    transition: var(--transition);
+    color: var(--color-dark);
 }
 
-.main-nav a:hover,
 .main-nav a.active {
-    color: var(--color-primary);
-}
-
-.main-nav a.active::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--color-primary);
-    border-radius: 1px;
+    border-bottom: 3px solid var(--color-primary);
 }
 
 
@@ -158,10 +246,37 @@ a:hover {
     font-size: 1rem;
 }
 
+/* Destaques (Highlights) */
+.highlights {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.highlight-item {
+    flex: 1;
+    min-width: 250px;
+    background-color: var(--color-light);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--color-muted);
+}
+
+.highlight-item h3 {
+    color: var(--color-primary);
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+
 /* ==================================== */
 /* 7. HERO (INDEX.HTML) */
 /* ==================================== */
 .hero {
+    /* Nota: 'assets/tela.jpg' deve existir no seu projeto para funcionar */
     background:
         linear-gradient(rgba(47, 79, 47, 0.6), rgba(47, 79, 47, 0.6)),
         url('../assets/tela.jpg') no-repeat center/cover;
@@ -197,6 +312,7 @@ a:hover {
     overflow: hidden;
     box-shadow: var(--shadow-soft);
     transition: var(--transition);
+    border: 1px solid var(--color-muted);
 }
 
 .projeto-card:hover {
@@ -279,8 +395,9 @@ input {
     padding: 10px;
     border: 1px solid var(--color-muted);
     border-radius: var(--border-radius);
-    background-color: #fdfdfd;
+    background-color: var(--color-light);
     font-size: 1rem;
+    color: var(--color-dark);
     transition: var(--transition);
 }
 
@@ -289,6 +406,14 @@ input:focus {
     box-shadow: 0 0 5px rgba(78, 138, 87, 0.3);
     outline: none;
 }
+
+/* No modo escuro, o input precisa de um estilo específico para contraste */
+body.dark-mode input {
+    background-color: #333; 
+    border-color: #555;
+    color: var(--color-dark); /* cor do texto claro */
+}
+
 
 .submit-button {
     width: 100%;
@@ -316,14 +441,39 @@ input:focus {
     font-size: 0.85rem;
 }
 
+/* No modo escuro, o rodapé também se inverte */
+body.dark-mode .main-footer {
+    background-color: var(--color-light); /* Fundo escuro do rodapé */
+    color: var(--color-dark); /* Texto claro do rodapé */
+    border-top-color: var(--color-secondary);
+}
+
+body.dark-mode .main-footer p + p {
+    color: var(--color-secondary);
+}
+
 /* ==================================== */
 /* 11. RESPONSIVIDADE */
 /* ==================================== */
 @media (max-width: 700px) {
     .header-content {
+        /* Ajustei para alinhar o botão */
         flex-direction: column;
         text-align: center;
         gap: 1rem;
+    }
+
+    /* Move o botão e a logo de volta para o topo */
+    .logo-container {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #mode-toggle-button {
+        position: absolute; /* Posição fixa no topo direito */
+        top: 15px;
+        right: 15px;
+        margin: 0;
     }
 
     .main-nav {
